@@ -103,8 +103,9 @@ EOF
 
 # getting script directory
 START_DIR="$PWD"
-cd $(dirname $BASH_SOURCE)
-SCRIPT_DIR=$(pwd)
+SCRIPT_PATH=$(readlink -f "$BASH_SOURCE")
+SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
+cd "$SCRIPT_DIR"
 
 # checking renderer
 RENDERER="$SCRIPT_DIR/renderer.py"
